@@ -63,6 +63,19 @@ class GetAllTask extends StatelessWidget {
                               .showSnackBar(SnackBar(content: Text(e.toString())));
                         }
                       }, icon: Icon(Icons.delete)),
+                      IconButton(onPressed: ()async{
+                        if(taskList[index].favorite!.contains("1")){
+                          await TaskServices().removeFromFavorite(
+                              taskID: taskList[index].docId.toString(),
+                              userID: "1");
+                        }
+                        else{
+                          TaskServices().addToFavorite(
+                              taskID: taskList[index].docId.toString(),
+                              userID: "1");
+                        }
+                      }, icon: Icon(taskList[index].favorite!.contains("1")?
+                      Icons.favorite: Icons.favorite_border))
                     ],
                   )
                 );

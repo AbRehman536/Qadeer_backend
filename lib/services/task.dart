@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../model/task.dart';
 
 class TaskServices {
+  String taskCollection = "taskCollection";
   ///Create Task
   Future createTask(TaskModel model) async {
     DocumentReference documentReference = FirebaseFirestore.instance
@@ -94,25 +95,30 @@ class TaskServices {
   Stream<List<TaskModel>> getMyFavorite(String userID){
     return FirebaseFirestore.instance
         .collection('taskCollection')
-        .where("favorite" , arrayContains: userID)
+        .where("favorite", arrayContains: userID)
         .snapshots()
-        .map((taskList)=> taskList.docs
-          .map((taskJson)=> TaskModel.fromJson(taskJson.data()))
-        .toList()
+        .map(
+          (taskList) => taskList.docs
+          .map((taskJson) => TaskModel.fromJson(taskJson.data()))
+          .toList(),
     );
   }
   //Add To Favorite
-  Future addToFavorite({required String userID,required String taskID})async{
+  Future addToFavorite({
+    required String taskID, required String userID
+})async{
     return await FirebaseFirestore.instance
-        .collection('taskCollection')
+        .collection(taskCollection)
         .doc(taskID)
-        .update({"favorite": FieldValue.arrayUnion([userID])});
+        .update({"favorite" : FieldValue.arrayUnion([userID])});
   }
   //Remove From Favorite
-  Future removeFromFavorite({required String userID,required String taskID})async{
+  Future removeFromFavorite({
+    required String taskID, required String userID
+  })async{
     return await FirebaseFirestore.instance
-        .collection('taskCollection')
+        .collection(taskCollection)
         .doc(taskID)
-        .update({"favorite": FieldValue.arrayRemove([userID])});
+        .update({"favorite" : FieldValue.arrayRemove([userID])});
   }
 }
