@@ -8,6 +8,7 @@ class TaskModel {
   final String? docId;
   final String? name;
   final String? description;
+  final String? priorityID;
   final List<dynamic>? favorite;
   final bool? isCompleted;
   final int? createdAt;
@@ -17,6 +18,7 @@ class TaskModel {
     this.name,
     this.description,
     this.favorite,
+    this.priorityID,
     this.isCompleted,
     this.createdAt,
   });
@@ -25,6 +27,7 @@ class TaskModel {
     docId: json["docID"],
     name: json["name"],
     description: json["description"],
+    priorityID: json["priorityID"],
     favorite: json["favorite"] == null ? [] : List<dynamic>.from(json["favorite"]!.map((x) => x)),
     isCompleted: json["isCompleted"],
     createdAt: json["createdAt"],
@@ -34,6 +37,7 @@ class TaskModel {
     "docID": taskID,
     "name": name,
     "description": description,
+    "priorityID": priorityID,
     "favorite": favorite == null ? [] : List<dynamic>.from(favorite!.map((x) => x)),
     "isCompleted": isCompleted,
     "createdAt": createdAt,
