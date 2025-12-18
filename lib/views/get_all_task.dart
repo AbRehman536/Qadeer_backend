@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qadeer_backend/views/get_all_priority.dart';
 import 'package:qadeer_backend/views/get_completed_task.dart';
+import 'package:qadeer_backend/views/get_favorite_task.dart';
 import 'package:qadeer_backend/views/get_inCompleted_task.dart';
 import 'package:qadeer_backend/views/update_task.dart';
 
@@ -23,6 +25,12 @@ class GetAllTask extends StatelessWidget {
           IconButton(onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (context)=>GetInCompletedTask()));
           }, icon: Icon(Icons.incomplete_circle)),
+          IconButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>GetFavoriteTask()));
+          }, icon: Icon(Icons.favorite)),
+          IconButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>GetAllPriorityTask()));
+          }, icon: Icon(Icons.category)),
         ],
       ),
       floatingActionButton: FloatingActionButton(onPressed: (){

@@ -5,6 +5,7 @@ import 'package:qadeer_backend/services/priority.dart';
 import 'package:qadeer_backend/views/create_priority.dart';
 import 'package:qadeer_backend/views/get_completed_task.dart';
 import 'package:qadeer_backend/views/get_inCompleted_task.dart';
+import 'package:qadeer_backend/views/get_priority_task.dart';
 import 'package:qadeer_backend/views/update_task.dart';
 
 import '../model/task.dart';
@@ -40,7 +41,10 @@ class GetAllPriorityTask extends StatelessWidget {
                       children: [
                         IconButton(onPressed: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context)=> CreatePriority(model: PriorityModel(), isUpdateMode: true)));
-                        }, icon: Icon(Icons.edit))
+                        }, icon: Icon(Icons.edit)),
+                        IconButton(onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> GetPriorityTask(model: PriorityModel())));
+                        }, icon: Icon(Icons.arrow_forward)),
 
                       ],
                     )
