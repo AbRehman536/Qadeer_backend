@@ -9,7 +9,7 @@ class AuthService{
     try{
      UserCredential userCredential = await FirebaseAuth.instance
          .createUserWithEmailAndPassword(email: email, password: password);
-     userCredential.user!.emailVerified;
+     userCredential.user!.sendEmailVerification();
      return userCredential.user!;
     }catch(e){
       throw e.toString();

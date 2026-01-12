@@ -4,6 +4,7 @@ import 'package:qadeer_backend/views/get_all_priority.dart';
 import 'package:qadeer_backend/views/get_completed_task.dart';
 import 'package:qadeer_backend/views/get_favorite_task.dart';
 import 'package:qadeer_backend/views/get_inCompleted_task.dart';
+import 'package:qadeer_backend/views/profile.dart';
 import 'package:qadeer_backend/views/update_task.dart';
 
 import '../model/task.dart';
@@ -31,6 +32,9 @@ class GetAllTask extends StatelessWidget {
           IconButton(onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (context)=>GetAllPriorityTask()));
           }, icon: Icon(Icons.category)),
+          IconButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>GetProfile()));
+          }, icon: Icon(Icons.person)),
         ],
       ),
       floatingActionButton: FloatingActionButton(onPressed: (){
